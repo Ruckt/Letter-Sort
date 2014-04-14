@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>F74A6703-4F63-4C75-8917-1F07B29C830A</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Anagram</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>3685FE4A-B0B6-485D-981F-4F56F74123AA</key>
+		<string>ssh://github.com/Ruckt/morning-todos-iOS-001.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>3-11-14/Anagram/Anagram.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>3685FE4A-B0B6-485D-981F-4F56F74123AA</key>
+		<string>../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://github.com/Ruckt/morning-todos-iOS-001.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>3685FE4A-B0B6-485D-981F-4F56F74123AA</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>3685FE4A-B0B6-485D-981F-4F56F74123AA</string>
+			<key>IDESourceControlWCCName</key>
+			<string>morning-todos-iOS-001</string>
+		</dict>
+	</array>
+</dict>
+</plist>
