@@ -7,19 +7,23 @@
 //
 
 #import "ViewController.h"
+#import "DataStore.h"
+//#import "WordList.h"
 
 @interface ViewController ()
 
-@property (strong, nonatomic) NSArray *alphabet;
-@property (strong, nonatomic) NSMutableArray *characterCollection;
 @property (strong, nonatomic) NSMutableArray *potentialWords;
-@property (strong, nonatomic) NSMutableSet *potentialWordsSet;
-@property const NSInteger wordSize;
+//@property (strong, nonatomic) NSMutableSet *potentialWordsSet;
+
+@property DataStore *dataStore;
+
+
+//@property (strong, nonatomic) WordList *wordList;
+
 
 @property (weak, nonatomic) IBOutlet UITextField *letterInputs;
-
-- (IBAction)activateLetterSortButton:(UIButton *)sender;
 @property (weak, nonatomic) IBOutlet UITextView *listOfWords;
+- (IBAction)activateLetterSortButton:(UIButton *)sender;
 
 
 
@@ -33,6 +37,9 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    //self.wordList = [[WordList alloc] init];
+    
+    self.dataStore = [DataStore sharedDataStore];
     
     self.letterInputs.delegate = self;
     [self.letterInputs becomeFirstResponder];
@@ -152,18 +159,21 @@
 
 -(void)findingPossibleWords
 {
-    NSLog(@"Real words");
+    NSLog(@"Real words: ");
     NSMutableArray *realWords = [[NSMutableArray alloc] init];
     for (NSString *potentialWord in self.potentialWords)
     {
-        if ([self isDictionaryWord:potentialWord]) {
+        if ([self.dataStore isDictionaryWord:potentialWord]) {
+        //if ([self isDictionaryWord:potentialWord]) {
             NSLog(@"%@", potentialWord);
              [realWords addObject:potentialWord];
+
+            dispatch_async(dispatch_get_main_queue(), ^{
+                self.listOfWords.text = [realWords componentsJoinedByString:@"\n"];
+            });
         }
     }
-    dispatch_async(dispatch_get_main_queue(), ^{
-        self.listOfWords.text = [realWords componentsJoinedByString:@"\n"];
-    });
+
 }
 
 -(BOOL)isDictionaryWord:(NSString*) word {

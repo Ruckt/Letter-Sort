@@ -10,7 +10,4 @@
 
 @interface ViewController : UIViewController <UITextFieldDelegate>
 
--(NSString *) randomCharacterString: (NSInteger *) size;
--(BOOL)isDictionaryWord:(NSString*) word;
-
 @end

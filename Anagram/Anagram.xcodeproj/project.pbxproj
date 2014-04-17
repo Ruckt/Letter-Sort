@@ -21,6 +21,9 @@
 		E245902118CF47D80044A855 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E245900318CF47D80044A855 /* UIKit.framework */; };
 		E245902918CF47D80044A855 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E245902718CF47D80044A855 /* InfoPlist.strings */; };
 		E245902B18CF47D80044A855 /* AnagramTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E245902A18CF47D80044A855 /* AnagramTests.m */; };
+		E2470F2118FDEB8200BE6DAE /* DataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = E2470F2018FDEB8200BE6DAE /* DataStore.m */; };
+		E2D830E218FD8B4200033B1D /* word_list.txt in Resources */ = {isa = PBXBuildFile; fileRef = E2D830E118FD8B4200033B1D /* word_list.txt */; };
+		E2D830E518FD937400033B1D /* WordList.m in Sources */ = {isa = PBXBuildFile; fileRef = E2D830E418FD937400033B1D /* WordList.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +56,11 @@
 		E245902618CF47D80044A855 /* AnagramTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AnagramTests-Info.plist"; sourceTree = "<group>"; };
 		E245902818CF47D80044A855 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E245902A18CF47D80044A855 /* AnagramTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AnagramTests.m; sourceTree = "<group>"; };
+		E2470F1F18FDEB8200BE6DAE /* DataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataStore.h; sourceTree = "<group>"; };
+		E2470F2018FDEB8200BE6DAE /* DataStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataStore.m; sourceTree = "<group>"; };
+		E2D830E118FD8B4200033B1D /* word_list.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = word_list.txt; sourceTree = "<group>"; };
+		E2D830E318FD937400033B1D /* WordList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordList.h; sourceTree = "<group>"; };
+		E2D830E418FD937400033B1D /* WordList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordList.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,11 +120,16 @@
 		E245900518CF47D80044A855 /* Anagram */ = {
 			isa = PBXGroup;
 			children = (
+				E2D830E118FD8B4200033B1D /* word_list.txt */,
 				E245900E18CF47D80044A855 /* AppDelegate.h */,
 				E245900F18CF47D80044A855 /* AppDelegate.m */,
 				E245901118CF47D80044A855 /* Main.storyboard */,
 				E245901418CF47D80044A855 /* ViewController.h */,
 				E245901518CF47D80044A855 /* ViewController.m */,
+				E2D830E318FD937400033B1D /* WordList.h */,
+				E2D830E418FD937400033B1D /* WordList.m */,
+				E2470F1F18FDEB8200BE6DAE /* DataStore.h */,
+				E2470F2018FDEB8200BE6DAE /* DataStore.m */,
 				E245901718CF47D80044A855 /* Images.xcassets */,
 				E245900618CF47D80044A855 /* Supporting Files */,
 			);
@@ -230,6 +243,7 @@
 			files = (
 				E245901818CF47D80044A855 /* Images.xcassets in Resources */,
 				E245900A18CF47D80044A855 /* InfoPlist.strings in Resources */,
+				E2D830E218FD8B4200033B1D /* word_list.txt in Resources */,
 				E245901318CF47D80044A855 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -249,7 +263,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E2470F2118FDEB8200BE6DAE /* DataStore.m in Sources */,
 				E245901618CF47D80044A855 /* ViewController.m in Sources */,
+				E2D830E518FD937400033B1D /* WordList.m in Sources */,
 				E245901018CF47D80044A855 /* AppDelegate.m in Sources */,
 				E245900C18CF47D80044A855 /* main.m in Sources */,
 			);

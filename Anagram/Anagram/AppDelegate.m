@@ -6,13 +6,28 @@
 //  Copyright (c) 2014 Edan Lichtenstein. All rights reserved.
 //
 
+
 #import "AppDelegate.h"
+#import "DataStore.h"
+//#import "WordList.h"
+
+@interface AppDelegate ()
+
+@property (strong, nonatomic) DataStore *dataStore;
+
+@end
+
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    
+   
+    //WordList *wordList = [[WordList alloc] initWithNSSet:[self parseWordListTXT]];
+    self.dataStore = [DataStore sharedDataStore];
+    [self.dataStore parseWordListTXT];
     return YES;
 }
 							
@@ -42,6 +57,8 @@
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
+
 
 
 
