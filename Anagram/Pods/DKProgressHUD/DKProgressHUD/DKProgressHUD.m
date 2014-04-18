@@ -57,7 +57,7 @@ static DKProgressHUD *sharedInstance;
     if ( ! [sharedInstance isVisible] ) {
     
         sharedInstance.spinnerView = [[SpinnerView alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
-        sharedInstance.spinnerView.center = CGPointMake(view.frame.size.width/2, view.frame.size.height/2);
+        sharedInstance.spinnerView.center = CGPointMake(view.frame.size.width/2, 145);
         [view addSubview:sharedInstance.spinnerView];
         
         [sharedInstance setIsVisible:YES];

@@ -31,7 +31,9 @@
 #import <QuartzCore/QuartzCore.h>
 #import "DKProgressHUD.h"
 
-static const float hexagonSize = 12.0f;
+//static const float hexagonSize = 12.0f;
+static const float hexagonSize = 20.0f;
+
 static inline double radians (double degrees) {return degrees * M_PI/180;}
 
 @implementation HexagonView

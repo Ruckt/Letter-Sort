@@ -8,7 +8,7 @@
 
 #import "ViewController.h"
 #import "DataStore.h"
-//#import "WordList.h"
+#import <DKProgressHUD/DKProgressHUD.h>
 
 @interface ViewController ()
 
@@ -67,15 +67,36 @@
 
 -(void) inputToWords
 {
-    self.realWords = [[NSMutableArray alloc] init];
-    self.listOfWords.text = @"";
     
+    [self.letterInputs setHidden:YES];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [DKProgressHUD showInView:self.view];
+
+    });
+    
+    self.realWords = [[NSMutableArray alloc] init];
+
+    self.listOfWords.text = @"";
     [self.queue addOperationWithBlock:^{
         NSMutableArray *characterInputReceived = [self turnInputIntoArray];
         self.potentialWords = [self recursiveLetterMixer:characterInputReceived];
         NSLog(@"All letter combinations: %@", self.potentialWords);
-//        [self findingPossibleWords];
+        [self stopProgressHUD];
+
     }];
+    
+
+
+}
+
+-(void) stopProgressHUD
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+    [DKProgressHUD hide];
+    [self.letterInputs setHidden:NO];
+    });
+
+
 }
 
 

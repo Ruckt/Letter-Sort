@@ -67,7 +67,7 @@ static inline double radians (double degrees) {return degrees * M_PI/180;}
         [self.hexagons addObject:hexagon5];
         [self.hexagons addObject:hexagon3];
         
-        self.backgroundColor = [UIColor blackColor];
+        self.backgroundColor = [UIColor clearColor];
         self.alpha = 0.8;
         self.layer.cornerRadius = 5;
         self.clipsToBounds = YES;
