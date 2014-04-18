@@ -15,6 +15,7 @@
 @property DataStore *dataStore;
 
 @property (strong, nonatomic) NSMutableArray *potentialWords;
+@property (strong, nonatomic) NSMutableArray *realWords;
 @property (weak, nonatomic) IBOutlet UITextField *letterInputs;
 @property (weak, nonatomic) IBOutlet UITextView *listOfWords;
 @property (strong, nonatomic) NSOperationQueue *queue;
@@ -40,7 +41,7 @@
     
     self.queue = [[NSOperationQueue alloc] init];
     //self.queue.maxConcurrentOperationCount=1;
-
+    
 }
 
 
@@ -66,13 +67,14 @@
 
 -(void) inputToWords
 {
-
+    self.realWords = [[NSMutableArray alloc] init];
+    self.listOfWords.text = @"";
     
     [self.queue addOperationWithBlock:^{
         NSMutableArray *characterInputReceived = [self turnInputIntoArray];
         self.potentialWords = [self recursiveLetterMixer:characterInputReceived];
         NSLog(@"All letter combinations: %@", self.potentialWords);
-        [self findingPossibleWords];
+//        [self findingPossibleWords];
     }];
 }
 
@@ -95,25 +97,47 @@
  }
 
 
--(void)findingPossibleWords
+//-(void)findingPossibleWords
+//{
+//    NSLog(@"Possible words: ");
+//    for (NSString *potentialWord in self.potentialWords)
+//    {
+//        if ([self.dataStore isDictionaryWord:potentialWord]) {
+//            NSLog(@"%@", potentialWord);
+//            if (![self isWordPreviouslyGenerated:potentialWord]) {
+//                [self writeWordToView:potentialWord];
+//            }
+//        }
+//    }
+//}
+
+-(void)checkIfWord: (NSString *) word
 {
-    NSLog(@"Possible words: ");
-    for (NSString *potentialWord in self.potentialWords)
-    {
-        if ([self.dataStore isDictionaryWord:potentialWord]) {
-            NSLog(@"%@", potentialWord);
-            [self writeWordToView:potentialWord];
+    if ([self.dataStore isDictionaryWord:word]) {
+        NSLog(@"We got a word: %@", word);
+        if (![self isWordPreviouslyGenerated:word]) {
+            [self.realWords addObject:word];
+            [self writeWordToView:word];
         }
     }
 }
 
+-(BOOL) isWordPreviouslyGenerated: (NSString *) word
+{
+    for (NSString *string in self.realWords)
+    {
+        if ([word isEqualToString: string]) {
+            return YES;
+        }
+    }
+    return NO;
+}
 
 -(void)writeWordToView: (NSString *) word
 {
-    NSMutableArray *realWords = [[NSMutableArray alloc] init];
-    [realWords addObject:word];
     dispatch_async(dispatch_get_main_queue(), ^{
-        self.listOfWords.text = [realWords componentsJoinedByString:@"\n"];
+        self.listOfWords.text = [self.listOfWords.text stringByAppendingString:word];
+        self.listOfWords.text = [self.listOfWords.text stringByAppendingString:@"\n"];
     });
 }
 
@@ -147,9 +171,7 @@
                 NSString *tempString = [tempArray objectAtIndex:j];
                 NSString *newString = [offBreak stringByAppendingString:tempString];
                 
-                if ([self.dataStore isDictionaryWord:newString]) {
-                    NSLog(@"Yes to word: %@", newString);
-                }
+                [self checkIfWord:newString];
                 [arrayToReturn insertObject:newString atIndex:j];
                 //NSLog(@"At j= %d, offbreak = %@, arrayToReturn = %@", j, offBreak, arrayToReturn);
             }
@@ -162,7 +184,7 @@
         
     }
     else if([randomLetters count] == 2) {
-        //NSLog(@"The 2s");
+        //The 2-Letter foundation of each word
         
         NSString *letter1 = [randomLetters objectAtIndex:0];
         NSString *letter2 = [randomLetters objectAtIndex:1];
@@ -173,12 +195,9 @@
         NSMutableArray *foundationArray = [[NSMutableArray alloc] init];
         [foundationArray addObject:string1];
         [foundationArray addObject:string2];
-        if ([self.dataStore isDictionaryWord:string1]) {
-            NSLog(@"Yes to word: %@", string1);
-        }
-        if ([self.dataStore isDictionaryWord:string2]) {
-            NSLog(@"Yes to word: %@", string2);
-        }
+
+       // [self checkIfWord:string1];
+       // [self checkIfWord:string2];
         
         return foundationArray;
     }
@@ -186,7 +205,6 @@
     {
         return randomLetters;
     }
-    
     return randomLetters;
 }
 
