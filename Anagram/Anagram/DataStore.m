@@ -42,7 +42,6 @@
     NSString *filePath = [[NSBundle mainBundle] pathForResource:@"word_list" ofType:@"txt"];
     NSString *contents = [NSString stringWithContentsOfURL:[NSURL fileURLWithPath:filePath] encoding:NSUTF8StringEncoding error:nil];
     
-    //NSURL *fileURL = [NSURL fileURLWithPath:filePath];
     NSArray *contentsOfString =[contents componentsSeparatedByString:@"\n"];
     
     NSMutableArray *individualWords = [[NSMutableArray alloc] init];
@@ -50,19 +49,11 @@
     for (NSString *wordPlus in contentsOfString) {
         if ([wordPlus length] > 0) {
         NSString *newString = [wordPlus substringToIndex:[wordPlus length]-1];
-        //NSString *stringWithoutNewLine = [wordPlus stringByReplacingOccurrencesOfString:@"\n" withString:@""];
-        //NSString *yourString = [wordPlus stringByTrimmingCharactersInSet:[NSCharacterSet newlineCharacterSet]];
         [individualWords addObject:newString];
         }
     }
-    
-        
-    
     self.wordList = [[NSSet alloc] initWithArray:individualWords];
-        
-    NSLog(@"%@", self.wordList);
-    NSLog(@"finished");
-    
+//    NSLog(@"%@", self.wordList);
 }
 
 

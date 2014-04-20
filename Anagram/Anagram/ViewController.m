@@ -25,7 +25,6 @@
 
 
 
-
 @end
 
 @implementation ViewController
@@ -35,7 +34,7 @@
     [super viewDidLoad];
     
     self.dataStore = [DataStore sharedDataStore];
-    
+        
     self.letterInputs.delegate = self;
     [self.letterInputs becomeFirstResponder];
     
@@ -67,43 +66,75 @@
 
 -(void) inputToWords
 {
+    NSString *input = [self.letterInputs.text stringByReplacingOccurrencesOfString:@" " withString:@""];
     
-    [self.letterInputs setHidden:YES];
+    if ([input length]<10) {
+        
+        [self.letterInputs setHidden:YES];
+        [self startProgressHUD];
+        
+        self.realWords = [[NSMutableArray alloc] init];
+        
+        
+        self.listOfWords.text = @"";
+        [self.queue addOperationWithBlock:^{
+            NSMutableArray *characterInputReceived = [self turnStringIntoCharacterArray:input];
+            self.potentialWords = [self recursiveLetterMixer:characterInputReceived];
+           // NSLog(@"All letter combinations: %@", self.potentialWords);
+            [self stopProgressHUD];
+            [self checkIfWordsMade];
+            
+        }];
+    }
+    else
+    {
+        self.listOfWords.text = @"Please visit github.com/Ruckt to submit memory efficient alogrithms for 10 letters or more";
+        NSLog(@"Bigger than 10");
+    }
+
+    
+
+
+}
+
+
+
+-(void) startProgressHUD
+{
     dispatch_async(dispatch_get_main_queue(), ^{
         [DKProgressHUD showInView:self.view];
-
     });
+   
     
-    self.realWords = [[NSMutableArray alloc] init];
-
-    self.listOfWords.text = @"";
-    [self.queue addOperationWithBlock:^{
-        NSMutableArray *characterInputReceived = [self turnInputIntoArray];
-        self.potentialWords = [self recursiveLetterMixer:characterInputReceived];
-        NSLog(@"All letter combinations: %@", self.potentialWords);
-        [self stopProgressHUD];
-
-    }];
-    
-
-
 }
 
 -(void) stopProgressHUD
 {
     dispatch_async(dispatch_get_main_queue(), ^{
-    [DKProgressHUD hide];
-    [self.letterInputs setHidden:NO];
+        [DKProgressHUD hide];
+        [self.letterInputs setHidden:NO];
     });
 
 
 }
 
+-(void) checkIfWordsMade
+{
+    if ([self.realWords count] == 0) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.listOfWords.text = @"No words can be formed";
+        });
 
--(NSMutableArray *) turnInputIntoArray
+    }
+}
+
+-(NSMutableArray *) turnStringIntoCharacterArray: (NSString *) string
 {
     NSMutableArray *characterInput = [[NSMutableArray alloc] init];
-    NSString *inputFromUser = self.letterInputs.text;
+    NSString *inputFromUser = [string lowercaseString];
+    
+  //  yourString stringByReplacingOccurrencesOfString:@" " withString:@""]
+    
     
     for (NSInteger i=0;i<[inputFromUser length];i++) {
         unichar character;
@@ -132,7 +163,7 @@
 //    }
 //}
 
--(void)checkIfWord: (NSString *) word
+-(void)checkAndPrintIfWord: (NSString *) word
 {
     if ([self.dataStore isDictionaryWord:word]) {
         NSLog(@"We got a word: %@", word);
@@ -192,7 +223,7 @@
                 NSString *tempString = [tempArray objectAtIndex:j];
                 NSString *newString = [offBreak stringByAppendingString:tempString];
                 
-                [self checkIfWord:newString];
+                [self checkAndPrintIfWord:newString];
                 [arrayToReturn insertObject:newString atIndex:j];
                 //NSLog(@"At j= %d, offbreak = %@, arrayToReturn = %@", j, offBreak, arrayToReturn);
             }
@@ -217,8 +248,8 @@
         [foundationArray addObject:string1];
         [foundationArray addObject:string2];
 
-       // [self checkIfWord:string1];
-       // [self checkIfWord:string2];
+       // [self checkAndPrintIfWord:string1];
+       // [self checkAndPrintIfWord:string2];
         
         return foundationArray;
     }
@@ -239,6 +270,7 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 
 
 
