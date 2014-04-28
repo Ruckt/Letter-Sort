@@ -14,16 +14,15 @@
 
 @property DataStore *dataStore;
 
-@property (strong, nonatomic) NSMutableArray *potentialWords;
 @property (strong, nonatomic) NSMutableArray *realWords;
+
 @property (weak, nonatomic) IBOutlet UITextField *letterInputs;
-@property (weak, nonatomic) IBOutlet UITextView *listOfWords;
-@property (strong, nonatomic) NSOperationQueue *queue;
+@property (weak, nonatomic) IBOutlet UIImageView *logoImageView;
+@property (strong, nonatomic) IBOutlet UITableView *wordListTableView;
 
 - (IBAction)activateLetterSortButton:(UIButton *)sender;
-@property (weak, nonatomic) IBOutlet UIImageView *logoImageView;
 
-@property (strong, nonatomic) IBOutlet UITableView *wordListTableView;
+@property (strong, nonatomic) NSOperationQueue *queue;
 
 
 
@@ -48,25 +47,11 @@
     self.queue = [[NSOperationQueue alloc] init];
     //self.queue.maxConcurrentOperationCount=1;
     
+
+    
 }
 
 
-
-
-
-#pragma mark User Input Areas
-
--(BOOL)textFieldShouldReturn:(UITextField *)textField
-{
-    [self inputToWords];
-    [self.letterInputs resignFirstResponder];
-    return YES;
-}
-
-- (IBAction)activateLetterSortButton:(UIButton *)sender {
-    [self inputToWords];
-    [self.letterInputs resignFirstResponder];
-}
 
 
 #pragma mark Make it Work
@@ -74,9 +59,7 @@
 -(void) inputToWords
 {
     NSString *input = [self.letterInputs.text stringByReplacingOccurrencesOfString:@" " withString:@""];
-    NSLog(@"Before %@", self.realWords);
     [self.realWords removeAllObjects];
-    NSLog(@"After %@", self.realWords);
 
     
     if ([input length]<10) {
@@ -87,10 +70,9 @@
         self.realWords = [[NSMutableArray alloc] init];
         
         
-        self.listOfWords.text = @"";
         [self.queue addOperationWithBlock:^{
             NSMutableArray *characterInputReceived = [self turnStringIntoCharacterArray:input];
-            self.potentialWords = [self recursiveLetterMixer:characterInputReceived];
+            [self recursiveLetterMixer:characterInputReceived];
            // NSLog(@"All letter combinations: %@", self.potentialWords);
             [self stopProgressHUD];
             [self checkIfWordsMade];
@@ -99,7 +81,7 @@
     }
     else
     {
-        self.listOfWords.text = @"Please visit github.com/Ruckt to submit memory efficient alogrithms for 10 letters or more";
+        [self showMessageWithTitle:@"Over Capacity" andMessage:@"Please visit github.com/Ruckt/Letter-Sort to submit memory efficient alogrithms for 10 letters or more."];
         NSLog(@"Bigger than 10");
     }
 
@@ -110,31 +92,11 @@
 
 
 
--(void) startProgressHUD
-{
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [DKProgressHUD showInView:self.view];
-    });
-   
-    
-}
-
--(void) stopProgressHUD
-{
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [DKProgressHUD hide];
-        [self.letterInputs setHidden:NO];
-        [self.wordListTableView reloadData];
-    });
-
-
-}
-
 -(void) checkIfWordsMade
 {
     if ([self.realWords count] == 0) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            self.listOfWords.text = @"No words can be formed";
+            [self showMessageWithTitle:@"No Matching Words" andMessage:@"Please try again with different letters."];
         });
 
     }
@@ -161,19 +123,7 @@
  }
 
 
-//-(void)findingPossibleWords
-//{
-//    NSLog(@"Possible words: ");
-//    for (NSString *potentialWord in self.potentialWords)
-//    {
-//        if ([self.dataStore isDictionaryWord:potentialWord]) {
-//            NSLog(@"%@", potentialWord);
-//            if (![self isWordPreviouslyGenerated:potentialWord]) {
-//                [self writeWordToView:potentialWord];
-//            }
-//        }
-//    }
-//}
+
 
 -(void)checkAndPrintIfWord: (NSString *) word
 {
@@ -181,7 +131,7 @@
         if (![self isWordPreviouslyGenerated:word]) {
             NSLog(@"We got a word: %@", word);
             [self.realWords addObject:word];
-            [self writeWordToView:word];
+            [self refreshScreen];
         }
     }
 }
@@ -197,11 +147,11 @@
     return NO;
 }
 
--(void)writeWordToView: (NSString *) word
+-(void)refreshScreen
 {
     dispatch_async(dispatch_get_main_queue(), ^{
-        self.listOfWords.text = [self.listOfWords.text stringByAppendingString:word];
-        self.listOfWords.text = [self.listOfWords.text stringByAppendingString:@"\n"];
+      
+        [self.wordListTableView reloadData];
     });
 }
 
@@ -220,7 +170,6 @@
             // NSLog(@"At i = %d, buildingBlock = %@", i, randomLetters);
             
             NSMutableArray *buildingArray = [[NSMutableArray alloc] initWithArray:randomLetters copyItems:YES];
-            //NSLog(@"At i = %d, buildingBlock = %@", i, tempArray);
             
             NSString *offBreak = [buildingArray objectAtIndex:i];
             [buildingArray removeObjectAtIndex:i];
@@ -230,7 +179,6 @@
             
             
             for (NSInteger j = 0; j<[tempArray count]; j++){
-                //    NSLog(@"At j = %d, buildingArray = %@", j, buildingArray);
                 
                 NSString *tempString = [tempArray objectAtIndex:j];
                 NSString *newString = [offBreak stringByAppendingString:tempString];
@@ -239,10 +187,7 @@
                 [arrayToReturn insertObject:newString atIndex:j];
                 //NSLog(@"At j= %d, offbreak = %@, arrayToReturn = %@", j, offBreak, arrayToReturn);
             }
-            //  NSLog(@"Returning = %@", arrayToReturn);
-            
         }
-        //NSLog(@"Returning after while = %@", arrayToReturn);
         
         return arrayToReturn;
         
@@ -254,14 +199,10 @@
         NSString *letter2 = [randomLetters objectAtIndex:1];
         NSString *string1 = [letter1 stringByAppendingString:letter2];
         NSString *string2 = [letter2 stringByAppendingString:letter1];
-        //[recurredBuildingBlock removeObject:buildingString];
         
         NSMutableArray *foundationArray = [[NSMutableArray alloc] init];
         [foundationArray addObject:string1];
         [foundationArray addObject:string2];
-
-       // [self checkAndPrintIfWord:string1];
-       // [self checkAndPrintIfWord:string2];
         
         return foundationArray;
     }
@@ -273,14 +214,60 @@
 }
 
 
+#pragma mark - UI Functions
+
+-(void) showMessageWithTitle:(NSString *)title andMessage:(NSString *)messageText
+{
+    UIAlertView *message = [[UIAlertView alloc] initWithTitle:title
+                                                      message:messageText
+                                                     delegate:nil
+                                            cancelButtonTitle:@"OK"
+                                            otherButtonTitles:nil];
+    [message show];
+}
+
+-(void) startProgressHUD
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [DKProgressHUD showInView:self.view];
+    });
+}
+
+
+-(void) stopProgressHUD
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [DKProgressHUD hide];
+        [self.letterInputs setHidden:NO];
+        [self.wordListTableView reloadData];
+    });
+}
+
+
+#pragma mark User Input Areas
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [self inputToWords];
+    [self.letterInputs resignFirstResponder];
+    return YES;
+}
+
+- (IBAction)activateLetterSortButton:(UIButton *)sender {
+    [self inputToWords];
+    [self.letterInputs resignFirstResponder];
+}
+
+
+
 #pragma mark - Table view data source
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-
-    NSLog(@"Number of rows: %lu", (unsigned long)[self.realWords count]);
+    
+    [self refreshScreen];
     return [self.realWords count];
 }
 
