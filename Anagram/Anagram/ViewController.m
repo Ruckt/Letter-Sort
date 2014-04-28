@@ -21,7 +21,9 @@
 @property (strong, nonatomic) NSOperationQueue *queue;
 
 - (IBAction)activateLetterSortButton:(UIButton *)sender;
+@property (weak, nonatomic) IBOutlet UIImageView *logoImageView;
 
+@property (strong, nonatomic) IBOutlet UITableView *wordListTableView;
 
 
 
@@ -32,7 +34,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.wordListTableView.delegate = self;
+    self.wordListTableView.dataSource = self;
     
+    
+    UIImage *logo = [UIImage imageNamed:@"LetterSortLogo.png"];
+    _logoImageView = [[UIImageView alloc] initWithImage:logo];
     self.dataStore = [DataStore sharedDataStore];
         
     self.letterInputs.delegate = self;
@@ -67,6 +74,10 @@
 -(void) inputToWords
 {
     NSString *input = [self.letterInputs.text stringByReplacingOccurrencesOfString:@" " withString:@""];
+    NSLog(@"Before %@", self.realWords);
+    [self.realWords removeAllObjects];
+    NSLog(@"After %@", self.realWords);
+
     
     if ([input length]<10) {
         
@@ -92,7 +103,7 @@
         NSLog(@"Bigger than 10");
     }
 
-    
+   // [self.wordListTableView reloadData];
 
 
 }
@@ -113,6 +124,7 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         [DKProgressHUD hide];
         [self.letterInputs setHidden:NO];
+        [self.wordListTableView reloadData];
     });
 
 
@@ -166,8 +178,8 @@
 -(void)checkAndPrintIfWord: (NSString *) word
 {
     if ([self.dataStore isDictionaryWord:word]) {
-        NSLog(@"We got a word: %@", word);
         if (![self isWordPreviouslyGenerated:word]) {
+            NSLog(@"We got a word: %@", word);
             [self.realWords addObject:word];
             [self writeWordToView:word];
         }
@@ -261,7 +273,24 @@
 }
 
 
+#pragma mark - Table view data source
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
 
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+
+    NSLog(@"Number of rows: %lu", (unsigned long)[self.realWords count]);
+    return [self.realWords count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+    cell.textLabel.text =[self.realWords objectAtIndex:[indexPath row]];
+    cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:30];
+    cell.textLabel.textAlignment = NSTextAlignmentCenter;
+    return cell;
+}
 
 
 
