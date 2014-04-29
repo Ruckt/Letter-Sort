@@ -79,6 +79,7 @@
             
             [self recursiveLetterMixer:characterInputReceived];
             // NSLog(@"All letter combinations: %@", self.potentialWords);
+            [self stopProgressHUD];
             
             [self checkIfWordsMade];
             
@@ -92,7 +93,7 @@
                     
                 }
                 
-                    //[self stopProgressHUD];
+                
             });
         });
         
