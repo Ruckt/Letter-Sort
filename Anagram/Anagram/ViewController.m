@@ -20,6 +20,8 @@
 @property (weak, nonatomic) IBOutlet UIImageView *logoImageView;
 @property (strong, nonatomic) IBOutlet UITableView *wordListTableView;
 
+@property (strong, nonatomic) NSMutableDictionary *wordDict;
+
 - (IBAction)activateLetterSortButton:(UIButton *)sender;
 
 @property (strong, nonatomic) NSOperationQueue *queue;
@@ -65,19 +67,36 @@
     if ([input length]<10) {
         
         [self.letterInputs setHidden:YES];
-        [self startProgressHUD];
+        
+        //[self startProgressHUD];
+        [DKProgressHUD showInView:self.view];
         
         self.realWords = [[NSMutableArray alloc] init];
         
-        
-        [self.queue addOperationWithBlock:^{
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            
             NSMutableArray *characterInputReceived = [self turnStringIntoCharacterArray:input];
+            
             [self recursiveLetterMixer:characterInputReceived];
-           // NSLog(@"All letter combinations: %@", self.potentialWords);
-            [self stopProgressHUD];
+            // NSLog(@"All letter combinations: %@", self.potentialWords);
+            
             [self checkIfWordsMade];
             
-        }];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                for (NSInteger i = 0; i < [self.realWords count]; i ++) {
+                    
+                    NSIndexPath *ip = [NSIndexPath indexPathForRow:i inSection:0];
+                    
+                    [self.wordListTableView cellForRowAtIndexPath:ip];
+                    
+                }
+                
+                    //[self stopProgressHUD];
+            });
+        });
+        
+        
     }
     else
     {
@@ -85,7 +104,7 @@
         NSLog(@"Bigger than 10");
     }
 
-   // [self.wordListTableView reloadData];
+   //[self.wordListTableView reloadData];
 
 
 }
@@ -128,9 +147,11 @@
 -(void)checkAndPrintIfWord: (NSString *) word
 {
     if ([self.dataStore isDictionaryWord:word]) {
+        
         if (![self isWordPreviouslyGenerated:word]) {
             NSLog(@"We got a word: %@", word);
             [self.realWords addObject:word];
+            //[self.wordListTableView reloadData];
             [self refreshScreen];
         }
     }
@@ -236,6 +257,7 @@
 
 -(void) stopProgressHUD
 {
+    
     dispatch_async(dispatch_get_main_queue(), ^{
         [DKProgressHUD hide];
         [self.letterInputs setHidden:NO];
@@ -254,38 +276,43 @@
 }
 
 - (IBAction)activateLetterSortButton:(UIButton *)sender {
+    
     [self inputToWords];
     [self.letterInputs resignFirstResponder];
 }
 
 
-
 #pragma mark - Table view data source
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    [self refreshScreen];
+    //[self refreshScreen];
+    
     return [self.realWords count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+    
     cell.textLabel.text =[self.realWords objectAtIndex:[indexPath row]];
+    
     cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:30];
+    
     cell.textLabel.textAlignment = NSTextAlignmentCenter;
+    
     return cell;
 }
 
 
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+
+
+
 
 
 

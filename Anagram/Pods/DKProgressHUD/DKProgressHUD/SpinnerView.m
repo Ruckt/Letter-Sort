@@ -74,6 +74,8 @@ static inline double radians (double degrees) {return degrees * M_PI/180;}
         
         self.timer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(changeColors) userInfo:nil repeats:YES];
         
+        [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:NSRunLoopCommonModes];
+        
         i = 0;
     }
     return self;
@@ -117,6 +119,7 @@ static inline double radians (double degrees) {return degrees * M_PI/180;}
 {
     if ( ! self.timer) {
         self.timer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(changeColors) userInfo:nil repeats:YES];
+        //[[NSRunLoop currentRunLoop] addTimer:self.timer forMode:NSRunLoopCommonModes];
     }
 }
 
