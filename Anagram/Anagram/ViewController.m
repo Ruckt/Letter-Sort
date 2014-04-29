@@ -20,9 +20,8 @@
 @property (weak, nonatomic) IBOutlet UIImageView *logoImageView;
 @property (strong, nonatomic) IBOutlet UITableView *wordListTableView;
 
-@property (strong, nonatomic) NSMutableDictionary *wordDict;
-
 - (IBAction)activateLetterSortButton:(UIButton *)sender;
+@property (strong, nonatomic) IBOutlet UILabel *letterSortButtonLabel;
 
 @property (strong, nonatomic) NSOperationQueue *queue;
 
@@ -41,6 +40,8 @@
     
     UIImage *logo = [UIImage imageNamed:@"LetterSortLogo.png"];
     _logoImageView = [[UIImageView alloc] initWithImage:logo];
+    
+    [self buildLabel];
     self.dataStore = [DataStore sharedDataStore];
         
     self.letterInputs.delegate = self;
@@ -49,7 +50,8 @@
     self.queue = [[NSOperationQueue alloc] init];
     //self.queue.maxConcurrentOperationCount=1;
     
-
+    
+    
     
 }
 
@@ -152,7 +154,6 @@
         if (![self isWordPreviouslyGenerated:word]) {
             NSLog(@"We got a word: %@", word);
             [self.realWords addObject:word];
-            //[self.wordListTableView reloadData];
             [self refreshScreen];
         }
     }
@@ -240,7 +241,7 @@
 }
 
 
-#pragma mark - UI Functions
+#pragma mark - Display
 
 -(void) showMessageWithTitle:(NSString *)title andMessage:(NSString *)messageText
 {
@@ -270,8 +271,16 @@
     });
 }
 
+-(void) buildLabel
+{
+    NSMutableAttributedString *titleString = [[NSMutableAttributedString alloc] initWithString:@"Letter Sort"];
 
-#pragma mark User Input Areas
+    self.letterSortButtonLabel.attributedText = titleString;
+
+}
+
+
+#pragma mark User Input Functions
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
 {
@@ -295,7 +304,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    //[self refreshScreen];
+    [self refreshScreen];
     
     return [self.realWords count];
 }
@@ -312,15 +321,6 @@
     
     return cell;
 }
-
-
-
-
-
-
-
-
-
 
 
 @end
