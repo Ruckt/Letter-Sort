@@ -204,6 +204,10 @@
         [foundationArray addObject:string1];
         [foundationArray addObject:string2];
         
+        // [self checkAndPrintIfWord:string1];
+        // [self checkAndPrintIfWord:string2];
+        
+        
         return foundationArray;
     }
     else
