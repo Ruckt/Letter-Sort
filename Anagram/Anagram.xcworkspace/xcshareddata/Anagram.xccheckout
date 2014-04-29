@@ -5,36 +5,36 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>2115CF87-4A8B-4A84-96ED-B35D8F561C51</string>
+	<string>8C5A36C5-0AA7-4F96-83ED-1CA8CD9970E4</string>
 	<key>IDESourceControlProjectName</key>
 	<string>Anagram</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>FF204109-51BC-4983-92C4-B61C443E85A4</key>
-		<string>ssh://github.com/Ruckt/Letter-Sort.git</string>
+		<key>573585C2-6D59-4201-A4A7-2E19878E5277</key>
+		<string>https://github.com/Ruckt/Letter-Sort.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>Anagram/Anagram.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>FF204109-51BC-4983-92C4-B61C443E85A4</key>
+		<key>573585C2-6D59-4201-A4A7-2E19878E5277</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>ssh://github.com/Ruckt/Letter-Sort.git</string>
+	<string>https://github.com/Ruckt/Letter-Sort.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>FF204109-51BC-4983-92C4-B61C443E85A4</string>
+	<string>573585C2-6D59-4201-A4A7-2E19878E5277</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>FF204109-51BC-4983-92C4-B61C443E85A4</string>
+			<string>573585C2-6D59-4201-A4A7-2E19878E5277</string>
 			<key>IDESourceControlWCCName</key>
-			<string>Letter Sort</string>
+			<string>Letter-Sort</string>
 		</dict>
 	</array>
 </dict>
