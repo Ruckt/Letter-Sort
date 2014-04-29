@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "DataStore.h"
 #import <DKProgressHUD/DKProgressHUD.h>
+#import "UIColor+Colors.h"
 
 @interface ViewController ()
 
@@ -17,7 +18,6 @@
 @property (strong, nonatomic) NSMutableArray *realWords;
 
 @property (weak, nonatomic) IBOutlet UITextField *letterInputs;
-@property (weak, nonatomic) IBOutlet UIImageView *logoImageView;
 @property (strong, nonatomic) IBOutlet UITableView *wordListTableView;
 
 - (IBAction)activateLetterSortButton:(UIButton *)sender;
@@ -36,10 +36,6 @@
     [super viewDidLoad];
     self.wordListTableView.delegate = self;
     self.wordListTableView.dataSource = self;
-    
-    
-    UIImage *logo = [UIImage imageNamed:@"LetterSortLogo.png"];
-    _logoImageView = [[UIImageView alloc] initWithImage:logo];
     
     [self buildLabel];
     self.dataStore = [DataStore sharedDataStore];
@@ -273,8 +269,31 @@
 
 -(void) buildLabel
 {
-    NSMutableAttributedString *titleString = [[NSMutableAttributedString alloc] initWithString:@"Letter Sort"];
+    NSString *letterSort = @"Letter Sort";
+    NSMutableAttributedString *titleString = [[NSMutableAttributedString alloc] initWithString:letterSort];
+    NSInteger stringLength=[titleString length];
+    UIColor *blue = [UIColor blueColorLetterSort];
+    UIColor *purple = [UIColor purpleColorLetterSort];
+    UIColor *red = [UIColor redColorLetterSort];
+    UIColor *yellow = [UIColor yellowColorLetterSort];
+    UIColor *green = [UIColor greenColorLetterSort];
+    
+    
+    UIFont *font=[UIFont fontWithName:@"American Typewriter" size:55.0f];
+    [titleString addAttribute:NSFontAttributeName value:font range:NSMakeRange(0, stringLength)];
 
+    [titleString addAttribute:NSForegroundColorAttributeName value:blue range:NSMakeRange(0, 1)];
+    [titleString addAttribute:NSForegroundColorAttributeName value:purple range:NSMakeRange(1, 1)];
+    [titleString addAttribute:NSForegroundColorAttributeName value:red range:NSMakeRange(2, 1)];
+    [titleString addAttribute:NSForegroundColorAttributeName value:yellow range:NSMakeRange(3, 1)];
+    [titleString addAttribute:NSForegroundColorAttributeName value:green range:NSMakeRange(4, 1)];
+    [titleString addAttribute:NSForegroundColorAttributeName value:blue range:NSMakeRange(5, 1)];
+    
+    [titleString addAttribute:NSForegroundColorAttributeName value:purple range:NSMakeRange(7, 1)];
+    [titleString addAttribute:NSForegroundColorAttributeName value:red range:NSMakeRange(8, 1)];
+    [titleString addAttribute:NSForegroundColorAttributeName value:yellow range:NSMakeRange(9, 1)];
+    [titleString addAttribute:NSForegroundColorAttributeName value:green range:NSMakeRange(10, 1)];
+    
     self.letterSortButtonLabel.attributedText = titleString;
 
 }
