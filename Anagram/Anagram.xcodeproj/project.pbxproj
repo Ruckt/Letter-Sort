@@ -23,7 +23,7 @@
 		E245902918CF47D80044A855 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E245902718CF47D80044A855 /* InfoPlist.strings */; };
 		E245902B18CF47D80044A855 /* AnagramTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E245902A18CF47D80044A855 /* AnagramTests.m */; };
 		E2470F2118FDEB8200BE6DAE /* DataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = E2470F2018FDEB8200BE6DAE /* DataStore.m */; };
-		E2931B511905581E0015C3B9 /* LetterSortLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = E2931B501905581E0015C3B9 /* LetterSortLogo.png */; };
+		E25C70391911702300AAD2DA /* wordObject.m in Sources */ = {isa = PBXBuildFile; fileRef = E25C70381911702300AAD2DA /* wordObject.m */; };
 		E2B21DD21910335D005108ED /* UIColor+Colors.m in Sources */ = {isa = PBXBuildFile; fileRef = E2B21DD11910335D005108ED /* UIColor+Colors.m */; };
 		E2D830E218FD8B4200033B1D /* word_list.txt in Resources */ = {isa = PBXBuildFile; fileRef = E2D830E118FD8B4200033B1D /* word_list.txt */; };
 		E2D830E518FD937400033B1D /* WordList.m in Sources */ = {isa = PBXBuildFile; fileRef = E2D830E418FD937400033B1D /* WordList.m */; };
@@ -62,7 +62,8 @@
 		E245902A18CF47D80044A855 /* AnagramTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AnagramTests.m; sourceTree = "<group>"; };
 		E2470F1F18FDEB8200BE6DAE /* DataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataStore.h; sourceTree = "<group>"; };
 		E2470F2018FDEB8200BE6DAE /* DataStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataStore.m; sourceTree = "<group>"; };
-		E2931B501905581E0015C3B9 /* LetterSortLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LetterSortLogo.png; sourceTree = "<group>"; };
+		E25C70371911702300AAD2DA /* wordObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wordObject.h; sourceTree = "<group>"; };
+		E25C70381911702300AAD2DA /* wordObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = wordObject.m; sourceTree = "<group>"; };
 		E2B21DD01910335D005108ED /* UIColor+Colors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Colors.h"; sourceTree = "<group>"; };
 		E2B21DD11910335D005108ED /* UIColor+Colors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Colors.m"; sourceTree = "<group>"; };
 		E2D830E118FD8B4200033B1D /* word_list.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = word_list.txt; sourceTree = "<group>"; };
@@ -137,13 +138,14 @@
 				E245901118CF47D80044A855 /* Main.storyboard */,
 				E245901418CF47D80044A855 /* ViewController.h */,
 				E245901518CF47D80044A855 /* ViewController.m */,
-				E2B21DD01910335D005108ED /* UIColor+Colors.h */,
-				E2B21DD11910335D005108ED /* UIColor+Colors.m */,
 				E2D830E318FD937400033B1D /* WordList.h */,
 				E2D830E418FD937400033B1D /* WordList.m */,
+				E25C70371911702300AAD2DA /* wordObject.h */,
+				E25C70381911702300AAD2DA /* wordObject.m */,
 				E2470F1F18FDEB8200BE6DAE /* DataStore.h */,
 				E2470F2018FDEB8200BE6DAE /* DataStore.m */,
-				E2931B501905581E0015C3B9 /* LetterSortLogo.png */,
+				E2B21DD01910335D005108ED /* UIColor+Colors.h */,
+				E2B21DD11910335D005108ED /* UIColor+Colors.m */,
 				E245901718CF47D80044A855 /* Images.xcassets */,
 				E245900618CF47D80044A855 /* Supporting Files */,
 			);
@@ -259,7 +261,6 @@
 			files = (
 				E245901818CF47D80044A855 /* Images.xcassets in Resources */,
 				E245900A18CF47D80044A855 /* InfoPlist.strings in Resources */,
-				E2931B511905581E0015C3B9 /* LetterSortLogo.png in Resources */,
 				E2D830E218FD8B4200033B1D /* word_list.txt in Resources */,
 				E245901318CF47D80044A855 /* Main.storyboard in Resources */,
 			);
@@ -315,6 +316,7 @@
 			files = (
 				E2470F2118FDEB8200BE6DAE /* DataStore.m in Sources */,
 				E2B21DD21910335D005108ED /* UIColor+Colors.m in Sources */,
+				E25C70391911702300AAD2DA /* wordObject.m in Sources */,
 				E245901618CF47D80044A855 /* ViewController.m in Sources */,
 				E2D830E518FD937400033B1D /* WordList.m in Sources */,
 				E245901018CF47D80044A855 /* AppDelegate.m in Sources */,

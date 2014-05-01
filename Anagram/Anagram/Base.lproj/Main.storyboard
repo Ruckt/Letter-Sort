@@ -13,7 +13,7 @@
                         <viewControllerLayoutGuide type="bottom" id="QbY-a2-WaD"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3IV-YY-EAT">
@@ -50,11 +50,11 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zaF-HT-cDp">
-                                <rect key="frame" x="0.0" y="170" width="320" height="398"/>
+                                <rect key="frame" x="0.0" y="170" width="320" height="310"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="ACy-hx-qhr">
-                                        <rect key="frame" x="9" y="3" width="300" height="381"/>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="ACy-hx-qhr">
+                                        <rect key="frame" x="9" y="3" width="300" height="293"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <prototypes>
@@ -70,6 +70,13 @@
                                     </tableView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="ACy-hx-qhr" secondAttribute="bottom" constant="14" id="2At-wQ-XrG"/>
+                                    <constraint firstAttribute="centerY" secondItem="ACy-hx-qhr" secondAttribute="centerY" constant="5.5" id="54b-25-bIi"/>
+                                    <constraint firstItem="ACy-hx-qhr" firstAttribute="leading" secondItem="zaF-HT-cDp" secondAttribute="leading" constant="9" id="RSG-Lv-SiF"/>
+                                    <constraint firstAttribute="trailing" secondItem="ACy-hx-qhr" secondAttribute="trailing" constant="11" id="SWB-1C-dX6"/>
+                                    <constraint firstItem="ACy-hx-qhr" firstAttribute="top" secondItem="zaF-HT-cDp" secondAttribute="top" constant="3" id="gDv-kl-IdT"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -99,6 +106,6 @@
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4"/>
+        <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
 </document>

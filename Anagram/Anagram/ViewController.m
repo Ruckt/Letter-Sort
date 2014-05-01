@@ -10,12 +10,15 @@
 #import "DataStore.h"
 #import <DKProgressHUD/DKProgressHUD.h>
 #import "UIColor+Colors.h"
+#import "wordObject.h"
 
 @interface ViewController ()
 
 @property DataStore *dataStore;
 
 @property (strong, nonatomic) NSMutableArray *realWords;
+@property (strong, nonatomic) wordObject *wordObject;
+@property (strong, nonatomic) UIColor *sessionColor;
 
 @property (weak, nonatomic) IBOutlet UITextField *letterInputs;
 @property (strong, nonatomic) IBOutlet UITableView *wordListTableView;
@@ -67,8 +70,10 @@
         [self.letterInputs setHidden:YES];
         
         //[self startProgressHUD];
+        [self setSessionColor];
         [DKProgressHUD showInView:self.view];
-        
+
+
         self.realWords = [[NSMutableArray alloc] init];
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
@@ -77,24 +82,13 @@
             
             [self recursiveLetterMixer:characterInputReceived];
             // NSLog(@"All letter combinations: %@", self.potentialWords);
+
             [self stopProgressHUD];
             
             [self checkIfWordsMade];
             
-            dispatch_async(dispatch_get_main_queue(), ^{
-                
-                for (NSInteger i = 0; i < [self.realWords count]; i ++) {
-                    
-                    NSIndexPath *ip = [NSIndexPath indexPathForRow:i inSection:0];
-                    
-                    [self.wordListTableView cellForRowAtIndexPath:ip];
-                    
-                }
-                
-                
-            });
+            
         });
-        
         
     }
     else
@@ -102,9 +96,6 @@
         [self showMessageWithTitle:@"Over Capacity" andMessage:@"Please visit github.com/Ruckt/Letter-Sort to submit memory efficient alogrithms for 10 letters or more."];
         NSLog(@"Bigger than 10");
     }
-
-   //[self.wordListTableView reloadData];
-
 
 }
 
@@ -126,8 +117,7 @@
     NSString *inputFromUser = [string lowercaseString];
     
   //  yourString stringByReplacingOccurrencesOfString:@" " withString:@""]
-    
-    
+   
     for (NSInteger i=0;i<[inputFromUser length];i++) {
         unichar character;
         character = [inputFromUser  characterAtIndex:i];
@@ -148,8 +138,11 @@
     if ([self.dataStore isDictionaryWord:word]) {
         
         if (![self isWordPreviouslyGenerated:word]) {
-            NSLog(@"We got a word: %@", word);
-            [self.realWords addObject:word];
+           
+            self.wordObject = [[wordObject alloc]initWithWord:word];
+             NSLog(@"We got a word %@ with value %ld", word, (long)self.wordObject.wordValue);
+            [self.realWords addObject:self.wordObject];
+            [self sortWordList];
             [self refreshScreen];
         }
     }
@@ -157,13 +150,38 @@
 
 -(BOOL) isWordPreviouslyGenerated: (NSString *) word
 {
-    for (NSString *string in self.realWords)
+    for (NSInteger i = 0; i < [self.realWords count]; i ++)
+    //for (NSString *string in self.realWords)
     {
+        wordObject *wordObject =[self.realWords objectAtIndex:i];
+        NSString *string = wordObject.word;
         if ([word isEqualToString: string]) {
             return YES;
         }
     }
     return NO;
+}
+
+//-(NSArray *) sortWordList: (NSArray *) inputArray
+-(void) sortWordList
+{
+    NSSortDescriptor *firstDescriptor = [[NSSortDescriptor alloc] initWithKey:@"wordValue" ascending:NO];
+    
+    NSArray *sortDescriptors = [NSArray arrayWithObjects:firstDescriptor, nil];
+   
+    NSArray *sortedArray = [self.realWords sortedArrayUsingDescriptors:sortDescriptors];
+    
+    self.realWords = [sortedArray mutableCopy];
+    [self refreshScreen];
+    
+//    for (wordObject *wordObject in sortedArray)
+//    {
+//        NSString *string = wordObject.word;
+//        NSLog(@"Sorted list: %@ at %ld", string, (long)wordObject.wordValue);
+//    }
+    
+//    return sortedArray;
+
 }
 
 -(void)refreshScreen
@@ -267,6 +285,41 @@
     });
 }
 
+-(void) setSessionColor
+{
+    
+    NSUInteger number = arc4random_uniform(5) + 1;
+    
+    switch (number) {
+        case 1:
+            [DKProgressHUD setColor:[UIColor yellowColorLetterSort]];
+            self.sessionColor = [UIColor yellowColorLetterSort];
+            break;
+        case 2:
+            [DKProgressHUD setColor:[UIColor greenColorLetterSort]];
+            self.sessionColor = [UIColor greenColorLetterSort];
+            break;
+        case 3:
+            self.sessionColor = [UIColor blueColorLetterSort];
+            [DKProgressHUD setColor:[UIColor blueColorLetterSort]];
+            break;
+        case 4:
+            self.sessionColor = [UIColor purpleColorLetterSort];
+            [DKProgressHUD setColor:[UIColor purpleColorLetterSort]];
+            break;
+        case 5:
+            self.sessionColor = [UIColor redColorLetterSort];
+            [DKProgressHUD setColor:[UIColor redColorLetterSort]];
+            break;
+        default:
+            self.sessionColor = [UIColor orangeColorLetterSort];
+            //[DKProgressHUD setColor:[UIColor orangeColorLetterSort]];
+            break;
+    }
+
+    
+}
+
 -(void) buildLabel
 {
     NSString *letterSort = @"Letter Sort";
@@ -332,8 +385,11 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
     
-    cell.textLabel.text =[self.realWords objectAtIndex:[indexPath row]];
+    wordObject *wordObject =[self.realWords objectAtIndex:[indexPath row]];
+    NSString *string = wordObject.word;
+    cell.textLabel.text = string;
     
+    cell.textLabel.textColor = self.sessionColor;
     cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:30];
     
     cell.textLabel.textAlignment = NSTextAlignmentCenter;
