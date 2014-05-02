@@ -25,6 +25,7 @@
 		E2470F2118FDEB8200BE6DAE /* DataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = E2470F2018FDEB8200BE6DAE /* DataStore.m */; };
 		E25C70391911702300AAD2DA /* wordObject.m in Sources */ = {isa = PBXBuildFile; fileRef = E25C70381911702300AAD2DA /* wordObject.m */; };
 		E2B21DD21910335D005108ED /* UIColor+Colors.m in Sources */ = {isa = PBXBuildFile; fileRef = E2B21DD11910335D005108ED /* UIColor+Colors.m */; };
+		E2D3989419144C1500E68D6D /* InformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2D3989319144C1500E68D6D /* InformationViewController.m */; };
 		E2D830E218FD8B4200033B1D /* word_list.txt in Resources */ = {isa = PBXBuildFile; fileRef = E2D830E118FD8B4200033B1D /* word_list.txt */; };
 		E2D830E518FD937400033B1D /* WordList.m in Sources */ = {isa = PBXBuildFile; fileRef = E2D830E418FD937400033B1D /* WordList.m */; };
 /* End PBXBuildFile section */
@@ -66,6 +67,8 @@
 		E25C70381911702300AAD2DA /* wordObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = wordObject.m; sourceTree = "<group>"; };
 		E2B21DD01910335D005108ED /* UIColor+Colors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Colors.h"; sourceTree = "<group>"; };
 		E2B21DD11910335D005108ED /* UIColor+Colors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Colors.m"; sourceTree = "<group>"; };
+		E2D3989219144C1500E68D6D /* InformationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InformationViewController.h; sourceTree = "<group>"; };
+		E2D3989319144C1500E68D6D /* InformationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InformationViewController.m; sourceTree = "<group>"; };
 		E2D830E118FD8B4200033B1D /* word_list.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = word_list.txt; sourceTree = "<group>"; };
 		E2D830E318FD937400033B1D /* WordList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordList.h; sourceTree = "<group>"; };
 		E2D830E418FD937400033B1D /* WordList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordList.m; sourceTree = "<group>"; };
@@ -138,6 +141,8 @@
 				E245901118CF47D80044A855 /* Main.storyboard */,
 				E245901418CF47D80044A855 /* ViewController.h */,
 				E245901518CF47D80044A855 /* ViewController.m */,
+				E2D3989219144C1500E68D6D /* InformationViewController.h */,
+				E2D3989319144C1500E68D6D /* InformationViewController.m */,
 				E2D830E318FD937400033B1D /* WordList.h */,
 				E2D830E418FD937400033B1D /* WordList.m */,
 				E25C70371911702300AAD2DA /* wordObject.h */,
@@ -317,6 +322,7 @@
 				E2470F2118FDEB8200BE6DAE /* DataStore.m in Sources */,
 				E2B21DD21910335D005108ED /* UIColor+Colors.m in Sources */,
 				E25C70391911702300AAD2DA /* wordObject.m in Sources */,
+				E2D3989419144C1500E68D6D /* InformationViewController.m in Sources */,
 				E245901618CF47D80044A855 /* ViewController.m in Sources */,
 				E2D830E518FD937400033B1D /* WordList.m in Sources */,
 				E245901018CF47D80044A855 /* AppDelegate.m in Sources */,
