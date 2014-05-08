@@ -24,7 +24,10 @@
 		E245902B18CF47D80044A855 /* AnagramTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E245902A18CF47D80044A855 /* AnagramTests.m */; };
 		E2470F2118FDEB8200BE6DAE /* DataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = E2470F2018FDEB8200BE6DAE /* DataStore.m */; };
 		E25C70391911702300AAD2DA /* wordObject.m in Sources */ = {isa = PBXBuildFile; fileRef = E25C70381911702300AAD2DA /* wordObject.m */; };
+		E26163FE191994C00032AC6B /* Icon-60@2x@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E26163FD191994C00032AC6B /* Icon-60@2x@2x.png */; };
+		E2616400191994E40032AC6B /* Icon-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E26163FF191994E40032AC6B /* Icon-60@2x.png */; };
 		E2B21DD21910335D005108ED /* UIColor+Colors.m in Sources */ = {isa = PBXBuildFile; fileRef = E2B21DD11910335D005108ED /* UIColor+Colors.m */; };
+		E2C0103A191A9611009202AD /* LS Splash.png in Resources */ = {isa = PBXBuildFile; fileRef = E2C01039191A9611009202AD /* LS Splash.png */; };
 		E2D3989419144C1500E68D6D /* InformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2D3989319144C1500E68D6D /* InformationViewController.m */; };
 		E2D830E218FD8B4200033B1D /* word_list.txt in Resources */ = {isa = PBXBuildFile; fileRef = E2D830E118FD8B4200033B1D /* word_list.txt */; };
 		E2D830E518FD937400033B1D /* WordList.m in Sources */ = {isa = PBXBuildFile; fileRef = E2D830E418FD937400033B1D /* WordList.m */; };
@@ -42,31 +45,34 @@
 
 /* Begin PBXFileReference section */
 		4FCD65583CDF45B8B2320AFD /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
-		E2458FFC18CF47D80044A855 /* Anagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Anagram.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E2458FFC18CF47D80044A855 /* Letter Sort.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Letter Sort.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2458FFF18CF47D80044A855 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E245900118CF47D80044A855 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		E245900318CF47D80044A855 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		E245900718CF47D80044A855 /* Anagram-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Anagram-Info.plist"; sourceTree = "<group>"; };
+		E245900718CF47D80044A855 /* Letter Sort-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Letter Sort-Info.plist"; sourceTree = "<group>"; };
 		E245900918CF47D80044A855 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E245900B18CF47D80044A855 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		E245900D18CF47D80044A855 /* Anagram-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Anagram-Prefix.pch"; sourceTree = "<group>"; };
+		E245900D18CF47D80044A855 /* Letter Sort-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Letter Sort-Prefix.pch"; sourceTree = "<group>"; };
 		E245900E18CF47D80044A855 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		E245900F18CF47D80044A855 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		E245901218CF47D80044A855 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E245901418CF47D80044A855 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		E245901518CF47D80044A855 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		E245901718CF47D80044A855 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		E245901D18CF47D80044A855 /* AnagramTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AnagramTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E245901D18CF47D80044A855 /* Letter SortTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Letter SortTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E245901E18CF47D80044A855 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		E245902618CF47D80044A855 /* AnagramTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AnagramTests-Info.plist"; sourceTree = "<group>"; };
+		E245902618CF47D80044A855 /* Letter SortTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Letter SortTests-Info.plist"; sourceTree = "<group>"; };
 		E245902818CF47D80044A855 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E245902A18CF47D80044A855 /* AnagramTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AnagramTests.m; sourceTree = "<group>"; };
 		E2470F1F18FDEB8200BE6DAE /* DataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataStore.h; sourceTree = "<group>"; };
 		E2470F2018FDEB8200BE6DAE /* DataStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataStore.m; sourceTree = "<group>"; };
 		E25C70371911702300AAD2DA /* wordObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wordObject.h; sourceTree = "<group>"; };
 		E25C70381911702300AAD2DA /* wordObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = wordObject.m; sourceTree = "<group>"; };
+		E26163FD191994C00032AC6B /* Icon-60@2x@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-60@2x@2x.png"; sourceTree = "<group>"; };
+		E26163FF191994E40032AC6B /* Icon-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-60@2x.png"; sourceTree = "<group>"; };
 		E2B21DD01910335D005108ED /* UIColor+Colors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Colors.h"; sourceTree = "<group>"; };
 		E2B21DD11910335D005108ED /* UIColor+Colors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Colors.m"; sourceTree = "<group>"; };
+		E2C01039191A9611009202AD /* LS Splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LS Splash.png"; sourceTree = "<group>"; };
 		E2D3989219144C1500E68D6D /* InformationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InformationViewController.h; sourceTree = "<group>"; };
 		E2D3989319144C1500E68D6D /* InformationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InformationViewController.m; sourceTree = "<group>"; };
 		E2D830E118FD8B4200033B1D /* word_list.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = word_list.txt; sourceTree = "<group>"; };
@@ -114,8 +120,8 @@
 		E2458FFD18CF47D80044A855 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E2458FFC18CF47D80044A855 /* Anagram.app */,
-				E245901D18CF47D80044A855 /* AnagramTests.xctest */,
+				E2458FFC18CF47D80044A855 /* Letter Sort.app */,
+				E245901D18CF47D80044A855 /* Letter SortTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -152,6 +158,9 @@
 				E2B21DD01910335D005108ED /* UIColor+Colors.h */,
 				E2B21DD11910335D005108ED /* UIColor+Colors.m */,
 				E245901718CF47D80044A855 /* Images.xcassets */,
+				E2C01039191A9611009202AD /* LS Splash.png */,
+				E26163FF191994E40032AC6B /* Icon-60@2x.png */,
+				E26163FD191994C00032AC6B /* Icon-60@2x@2x.png */,
 				E245900618CF47D80044A855 /* Supporting Files */,
 			);
 			path = Anagram;
@@ -160,10 +169,10 @@
 		E245900618CF47D80044A855 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				E245900718CF47D80044A855 /* Anagram-Info.plist */,
+				E245900718CF47D80044A855 /* Letter Sort-Info.plist */,
 				E245900818CF47D80044A855 /* InfoPlist.strings */,
 				E245900B18CF47D80044A855 /* main.m */,
-				E245900D18CF47D80044A855 /* Anagram-Prefix.pch */,
+				E245900D18CF47D80044A855 /* Letter Sort-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -180,7 +189,7 @@
 		E245902518CF47D80044A855 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				E245902618CF47D80044A855 /* AnagramTests-Info.plist */,
+				E245902618CF47D80044A855 /* Letter SortTests-Info.plist */,
 				E245902718CF47D80044A855 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
@@ -189,9 +198,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		E2458FFB18CF47D80044A855 /* Anagram */ = {
+		E2458FFB18CF47D80044A855 /* Letter Sort */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E245902E18CF47D80044A855 /* Build configuration list for PBXNativeTarget "Anagram" */;
+			buildConfigurationList = E245902E18CF47D80044A855 /* Build configuration list for PBXNativeTarget "Letter Sort" */;
 			buildPhases = (
 				CDD896D97D584332B1D99319 /* Check Pods Manifest.lock */,
 				E2458FF818CF47D80044A855 /* Sources */,
@@ -203,14 +212,14 @@
 			);
 			dependencies = (
 			);
-			name = Anagram;
+			name = "Letter Sort";
 			productName = Anagram;
-			productReference = E2458FFC18CF47D80044A855 /* Anagram.app */;
+			productReference = E2458FFC18CF47D80044A855 /* Letter Sort.app */;
 			productType = "com.apple.product-type.application";
 		};
-		E245901C18CF47D80044A855 /* AnagramTests */ = {
+		E245901C18CF47D80044A855 /* Letter SortTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E245903118CF47D80044A855 /* Build configuration list for PBXNativeTarget "AnagramTests" */;
+			buildConfigurationList = E245903118CF47D80044A855 /* Build configuration list for PBXNativeTarget "Letter SortTests" */;
 			buildPhases = (
 				E245901918CF47D80044A855 /* Sources */,
 				E245901A18CF47D80044A855 /* Frameworks */,
@@ -221,9 +230,9 @@
 			dependencies = (
 				E245902318CF47D80044A855 /* PBXTargetDependency */,
 			);
-			name = AnagramTests;
+			name = "Letter SortTests";
 			productName = AnagramTests;
-			productReference = E245901D18CF47D80044A855 /* AnagramTests.xctest */;
+			productReference = E245901D18CF47D80044A855 /* Letter SortTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -240,7 +249,7 @@
 					};
 				};
 			};
-			buildConfigurationList = E2458FF718CF47D80044A855 /* Build configuration list for PBXProject "Anagram" */;
+			buildConfigurationList = E2458FF718CF47D80044A855 /* Build configuration list for PBXProject "Letter Sort" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -253,8 +262,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				E2458FFB18CF47D80044A855 /* Anagram */,
-				E245901C18CF47D80044A855 /* AnagramTests */,
+				E2458FFB18CF47D80044A855 /* Letter Sort */,
+				E245901C18CF47D80044A855 /* Letter SortTests */,
 			);
 		};
 /* End PBXProject section */
@@ -264,10 +273,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E26163FE191994C00032AC6B /* Icon-60@2x@2x.png in Resources */,
 				E245901818CF47D80044A855 /* Images.xcassets in Resources */,
 				E245900A18CF47D80044A855 /* InfoPlist.strings in Resources */,
 				E2D830E218FD8B4200033B1D /* word_list.txt in Resources */,
 				E245901318CF47D80044A855 /* Main.storyboard in Resources */,
+				E2616400191994E40032AC6B /* Icon-60@2x.png in Resources */,
+				E2C0103A191A9611009202AD /* LS Splash.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -343,7 +355,7 @@
 /* Begin PBXTargetDependency section */
 		E245902318CF47D80044A855 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = E2458FFB18CF47D80044A855 /* Anagram */;
+			target = E2458FFB18CF47D80044A855 /* Letter Sort */;
 			targetProxy = E245902218CF47D80044A855 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -455,9 +467,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Anagram/Anagram-Prefix.pch";
-				INFOPLIST_FILE = "Anagram/Anagram-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "Anagram/Letter Sort-Prefix.pch";
+				INFOPLIST_FILE = "Anagram/Letter Sort-Info.plist";
+				PRODUCT_NAME = "Letter Sort";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -469,9 +481,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Anagram/Anagram-Prefix.pch";
-				INFOPLIST_FILE = "Anagram/Anagram-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "Anagram/Letter Sort-Prefix.pch";
+				INFOPLIST_FILE = "Anagram/Letter Sort-Info.plist";
+				PRODUCT_NAME = "Letter Sort";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -492,8 +504,8 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "AnagramTests/AnagramTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "AnagramTests/Letter SortTests-Info.plist";
+				PRODUCT_NAME = "Letter SortTests";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -511,8 +523,8 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Anagram/Anagram-Prefix.pch";
-				INFOPLIST_FILE = "AnagramTests/AnagramTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "AnagramTests/Letter SortTests-Info.plist";
+				PRODUCT_NAME = "Letter SortTests";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -521,7 +533,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		E2458FF718CF47D80044A855 /* Build configuration list for PBXProject "Anagram" */ = {
+		E2458FF718CF47D80044A855 /* Build configuration list for PBXProject "Letter Sort" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E245902C18CF47D80044A855 /* Debug */,
@@ -530,7 +542,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E245902E18CF47D80044A855 /* Build configuration list for PBXNativeTarget "Anagram" */ = {
+		E245902E18CF47D80044A855 /* Build configuration list for PBXNativeTarget "Letter Sort" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E245902F18CF47D80044A855 /* Debug */,
@@ -539,7 +551,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E245903118CF47D80044A855 /* Build configuration list for PBXNativeTarget "AnagramTests" */ = {
+		E245903118CF47D80044A855 /* Build configuration list for PBXNativeTarget "Letter SortTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E245903218CF47D80044A855 /* Debug */,

@@ -43,11 +43,8 @@
                                         <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Gv-NN-GAd">
-                                        <rect key="frame" x="20" y="20" width="46" height="30"/>
+                                        <rect key="frame" x="266" y="30" width="34" height="34"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Button">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
                                         <connections>
                                             <segue destination="egU-3Y-MWT" kind="modal" id="4xe-F6-glh"/>
                                         </connections>
@@ -104,6 +101,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="informationButton" destination="5Gv-NN-GAd" id="ind-FO-SIq"/>
                         <outlet property="letterInputs" destination="OP6-vu-yMn" id="bF3-hR-lJy"/>
                         <outlet property="letterSortButtonLabel" destination="hvc-SO-LAt" id="f1F-78-vTX"/>
                         <outlet property="wordListTableView" destination="ACy-hx-qhr" id="pVe-mS-kGQ"/>
@@ -126,32 +124,81 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gkB-cK-vVY">
-                                <rect key="frame" x="20" y="20" width="46" height="30"/>
+                                <rect key="frame" x="266" y="30" width="34" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button">
+                                <state key="normal">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="dismissInformationVCTapped:" destination="egU-3Y-MWT" eventType="touchUpInside" id="4ee-2U-Yof"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Letter Sort Created by /nEdan Lichtenstein  www.ruckt.com" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="dqU-fC-gia">
-                                <rect key="frame" x="20" y="453" width="280" height="95"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" text="About" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NKm-BF-2nI">
+                                <rect key="frame" x="20" y="50" width="280" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="afb-Hd-ypY"/>
+                                    <constraint firstAttribute="width" constant="280" id="xME-NP-CZf"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="25"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Letter Sort" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nov-ng-G8d">
+                                <rect key="frame" x="20" y="70" width="280" height="61"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="280" id="5a9-4u-6Ga"/>
+                                    <constraint firstAttribute="height" constant="61" id="N2Q-Sg-3rn"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Instructions" lineBreakMode="tailTruncation" numberOfLines="22" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="QkB-Oy-dJP">
+                                <rect key="frame" x="20" y="131" width="280" height="337"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="280" id="gCG-4y-xIk"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Letter Sort Created" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="dqU-fC-gia">
+                                <rect key="frame" x="20" y="473" width="280" height="80"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="e72-PZ-7eV"/>
+                                    <constraint firstAttribute="width" constant="280" id="n1R-MB-vQ8"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="24"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="nov-ng-G8d" firstAttribute="top" secondItem="NKm-BF-2nI" secondAttribute="bottom" id="IfK-1e-Tgb"/>
+                            <constraint firstItem="Dmu-7J-hia" firstAttribute="top" secondItem="dqU-fC-gia" secondAttribute="bottom" constant="15" id="LUG-vj-S7d"/>
+                            <constraint firstItem="QkB-Oy-dJP" firstAttribute="top" secondItem="nov-ng-G8d" secondAttribute="bottom" id="Lhb-NO-7Ol"/>
+                            <constraint firstAttribute="centerX" secondItem="dqU-fC-gia" secondAttribute="centerX" id="U9U-WI-TGf"/>
+                            <constraint firstItem="dqU-fC-gia" firstAttribute="top" secondItem="QkB-Oy-dJP" secondAttribute="bottom" constant="5" id="Vy8-Iv-7s7"/>
+                            <constraint firstAttribute="centerX" secondItem="NKm-BF-2nI" secondAttribute="centerX" id="ZCW-s6-Djq"/>
+                            <constraint firstItem="NKm-BF-2nI" firstAttribute="top" secondItem="5AS-Hs-Rcz" secondAttribute="bottom" constant="30" id="cJk-pi-S3m"/>
+                            <constraint firstAttribute="centerX" secondItem="QkB-Oy-dJP" secondAttribute="centerX" id="gCS-Jv-Vnd"/>
+                            <constraint firstAttribute="centerX" secondItem="nov-ng-G8d" secondAttribute="centerX" id="jew-ke-bvG"/>
+                        </constraints>
                     </view>
                     <connections>
+                        <outlet property="aboutLabel" destination="nov-ng-G8d" id="peI-4f-Ofe"/>
                         <outlet property="attributionLabel" destination="dqU-fC-gia" id="Onf-Se-xGn"/>
+                        <outlet property="dismissInformationVCButton" destination="gkB-cK-vVY" id="0l8-wH-hSG"/>
+                        <outlet property="instructionsLabel" destination="QkB-Oy-dJP" id="yeq-iq-VJ0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qkU-AQ-29O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="788" y="173"/>
+            <point key="canvasLocation" x="795" y="173"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

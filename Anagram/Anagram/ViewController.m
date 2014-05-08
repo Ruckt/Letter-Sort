@@ -7,10 +7,12 @@
 //
 
 #import "ViewController.h"
+#import "wordObject.h"
 #import "DataStore.h"
 #import <DKProgressHUD/DKProgressHUD.h>
 #import "UIColor+Colors.h"
-#import "wordObject.h"
+#import "FontAwesomeKit/FAKIonIcons.h"
+
 
 @interface ViewController ()
 
@@ -25,6 +27,7 @@
 
 - (IBAction)activateLetterSortButton:(UIButton *)sender;
 @property (strong, nonatomic) IBOutlet UILabel *letterSortButtonLabel;
+@property (strong, nonatomic) IBOutlet UIButton *informationButton;
 
 @property (strong, nonatomic) NSOperationQueue *queue;
 
@@ -41,6 +44,7 @@
     self.wordListTableView.dataSource = self;
     
     [self buildLabel];
+    [self buildInformationButton];
     self.dataStore = [DataStore sharedDataStore];
         
     self.letterInputs.delegate = self;
@@ -49,7 +53,7 @@
     self.queue = [[NSOperationQueue alloc] init];
     //self.queue.maxConcurrentOperationCount=1;
     
-    
+
     
     
 }
@@ -99,6 +103,11 @@
 
 }
 
+-(void) clearScreen
+{
+    [self.realWords removeAllObjects];
+    self.letterInputs.text = @"";
+}
 
 
 -(void) checkIfWordsMade
@@ -108,6 +117,7 @@
             [self showMessageWithTitle:@"No Matching Words" andMessage:@"Please try again with different letters."];
         });
 
+    [self clearScreen];
     }
 }
 
@@ -204,8 +214,6 @@
         
         for (NSInteger i = 0; i<[randomLetters count]; i++)
         {
-            // NSLog(@"At i = %d, buildingBlock = %@", i, randomLetters);
-            
             NSMutableArray *buildingArray = [[NSMutableArray alloc] initWithArray:randomLetters copyItems:YES];
             
             NSString *offBreak = [buildingArray objectAtIndex:i];
@@ -222,7 +230,6 @@
                 
                 [self checkAndPrintIfWord:newString];
                 [arrayToReturn insertObject:newString atIndex:j];
-                //NSLog(@"At j= %d, offbreak = %@, arrayToReturn = %@", j, offBreak, arrayToReturn);
             }
         }
         
@@ -351,6 +358,18 @@
 
 }
 
+-(void) buildInformationButton
+{
+    FAKIonIcons *infoIcon =[FAKIonIcons ios7HelpEmptyIconWithSize:30];
+    [infoIcon addAttribute:NSForegroundColorAttributeName value:[UIColor orangeColorLetterSort]];
+    UIImage *informationButtonImage = [infoIcon imageWithSize:CGSizeMake(30, 30)];
+    [self.informationButton setBackgroundImage:informationButtonImage forState:UIControlStateNormal];
+    
+    self.informationButton.layer.borderWidth = 1.0;
+    self.informationButton.layer.borderColor = [UIColor orangeColorLetterSort].CGColor;
+    self.informationButton.layer.cornerRadius = 17.0f;
+}
+
 
 #pragma mark User Input Functions
 
@@ -384,6 +403,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     wordObject *wordObject =[self.realWords objectAtIndex:[indexPath row]];
     NSString *string = wordObject.word;

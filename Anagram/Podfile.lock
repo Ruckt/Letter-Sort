@@ -1,10 +1,15 @@
 PODS:
   - DKProgressHUD (0.0.1)
+  - FontAwesomeKit/Core (2.1.5)
+  - FontAwesomeKit/IonIcons (2.1.5):
+    - FontAwesomeKit/Core
 
 DEPENDENCIES:
   - DKProgressHUD
+  - FontAwesomeKit/IonIcons
 
 SPEC CHECKSUMS:
   DKProgressHUD: 1a4737c9bc3f688683b1b9b2a1223507fd13a752
+  FontAwesomeKit: 7d935e100337d503bdaefde2ea16be740b81ed13
 
 COCOAPODS: 0.32.1

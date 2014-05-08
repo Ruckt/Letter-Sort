@@ -10,4 +10,6 @@
 
 @interface ViewController : UIViewController <UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource>
 
+-(void) clearScreen;
+
 @end
